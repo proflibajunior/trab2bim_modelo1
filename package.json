@@ -1,0 +1,27 @@
+{
+  "name": "trab2bim_modelo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proflibajunior/trab2bim_modelo1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/proflibajunior/trab2bim_modelo1/issues"
+  },
+  "homepage": "https://github.com/proflibajunior/trab2bim_modelo1#readme",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-route": "^1.7.9",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "ngstorage": "^0.3.11"
+  }
+}

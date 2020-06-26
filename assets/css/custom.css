@@ -1,0 +1,20 @@
+#admincontent {
+    margin-top: 40px;
+}
+#admincontent .table {
+    margin-top: 20px;
+}
+#admincontent thead .active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+#admincontent .card-header,
+#admincontent .card-footer {
+    display: flex;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+.sitecontent {
+    padding-top: 56px;
+}

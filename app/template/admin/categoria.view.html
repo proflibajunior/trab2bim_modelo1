@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#!/admin/categorias">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/admin/produtos">Produtos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="admincontent" class="container">
+    <div class="card">
+        <div class="card-header">
+            Cadastro de Categorias
+            <span class="spacer"></span>
+            <button class="btn btn-primary btn-sm" ng-click="novo()" ng-show="showTable">Novo</button>
+        </div>
+
+        <div class="card-body">
+
+            <div class="alert alert-danger text-center" ng-if="msgerro">
+                {{ msgerro }}
+            </div>
+
+            <div ng-if="showTable">
+                <input type="text" class="form-control form-control-lg" placeholder="Filtrar" ng-model="textFilter">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th width="50px">
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'id'}"
+                                    ng-click="setColumn('id')">Código</button>
+                            </th>
+                            <th colspan="2">
+                                <button class="btn btn-link" ng-class="{'active': selectedColumn == 'nome'}"
+                                    ng-click="setColumn('nome')">Nome</button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="categorias.length == 0">
+                        <tr>
+                            <td colspan="3">
+                                <p class="lead text-center text-muted">Nenhum categoria foi cadastrado</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="categorias.length > 0">
+                        <tr ng-repeat="categoria in categorias | filter: filter() | orderBy: selectedColumn:decrescente">
+                            <td>{{ categoria.id }}</td>
+                            <td width="100%">{{ categoria.nome }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning" ng-click="editar(categoria)">Editar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div ng-if="!showTable">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" placeholder="Informe o nome do categoria"
+                        ng-model="categoria.nome">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer" ng-if="!showTable">
+            <button class="btn btn-danger" ng-if="categoria.id" data-toggle="modal"
+                data-target="#confirmModal">EXCLUIR</button>
+            <span class="spacer"></span>
+            <button class="btn btn-light" ng-click="cancelar()">CANCELAR</button>
+            <button class="btn btn-success" ng-click="salvar()">SALVAR</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmModal" data-keyboard="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar Exclusão</h5>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir este registro?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">CANCELAR</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"
+                            ng-click="excluir()">CONFIRMAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
